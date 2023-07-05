@@ -10,17 +10,23 @@ let checkFunction = false;
 let timeId = 0;
 
 function onStartChangeColor() {
-if (checkFunction) {
+    if (checkFunction) {
+     
             return;
-        };
-
+    };
+   refs.stop.removeAttribute('disabled');
+    refs.start.setAttribute('disabled', true);
     timeId = setInterval(() => {     
         refs.start.closest('body').style.backgroundColor = getRandomHexColor();
         checkFunction = true;
+        
     }, 1000);  
    };
 
 function onStopChangeColor() {
+    refs.start.removeAttribute('disabled');
+    
+    refs.stop.setAttribute('disabled', true);
     clearInterval(timeId);
     checkFunction = false;    
 }

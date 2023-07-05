@@ -21,8 +21,11 @@ refs.startBtn.addEventListener('click', onStartTime);
 function onStartTime() {
     onDisabledBtn();
     refs.input.setAttribute('disabled', true);
-       setInterval(() => {
-           const currentDate = new Date();
+    setInterval(() => {          
+        const currentDate = new Date();
+        if (selectedDate - currentDate < 0) {
+            return;
+        }
            let clock = convertMs(selectedDate - currentDate);                   
     
                refs.days.textContent = clock.days;
