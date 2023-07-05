@@ -1,5 +1,5 @@
 import Notiflix from "notiflix";
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
+
 
 const refs = {
   form: document.querySelector('.form'),
@@ -21,14 +21,14 @@ function onPushSubmit(e) {
   amount = Number(amount.value);
   
   for (i = 1; i <= amount; i += 1){
-    createPromise({ i, delay })
-    .then(({ position, delay }) => {
-    console.log(`✅ Fulfilled promise ${position} in ${delay}ms`);
+    createPromise( i, delay )
+    .then(({position, delay }) => {
+    Notiflix.Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
   })
   .catch(({ position, delay }) => {
-    console.log(`❌ Rejected promise ${position} in ${delay}ms`);
+    Notiflix.Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`);
   });
-
+delay += step;
   }
 };
 
@@ -36,10 +36,14 @@ function onPushSubmit(e) {
 function createPromise(position, delay) {
   const shouldResolve = Math.random() > 0.3;
   return new Promise((resolve, reject) => {
-    if (shouldResolve) {
-      resolve({ position, delay });
-    } else {
-       reject({ position, delay });  
-    }
-  })  
+    setTimeout(() => {
+      
+      if (shouldResolve) {
+        resolve({ position, delay });
+      } else {
+        reject({ position, delay });
+        console.log(delay);
+      }
+    }, delay);   
+  }); 
 }
