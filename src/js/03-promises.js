@@ -1,14 +1,10 @@
 import Notiflix from "notiflix";
 
-
 const refs = {
   form: document.querySelector('.form'),
 };
 
-
-
 refs.form.addEventListener('submit', onPushSubmit);
-
 
 function onPushSubmit(e) {
   e.preventDefault();
@@ -30,8 +26,8 @@ function onPushSubmit(e) {
   });
 delay += step;
   }
+  e.currentTarget.reset();
 };
-
 
 function createPromise(position, delay) {
   const shouldResolve = Math.random() > 0.3;
@@ -42,8 +38,7 @@ function createPromise(position, delay) {
         resolve({ position, delay });
       } else {
         reject({ position, delay });
-        console.log(delay);
-      }
+              }
     }, delay);   
   }); 
 }
