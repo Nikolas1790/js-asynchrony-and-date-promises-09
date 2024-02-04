@@ -26,13 +26,13 @@ function onStartTime() {
         if (selectedDate - currentDate < 0) {
             return;
         }
-           let clock = convertMs(selectedDate - currentDate);                   
+        let clock = convertMs(selectedDate - currentDate);                   
     
-               refs.days.textContent = clock.days;
-                refs.hours.textContent = clock.hours;
-                refs.minutes.textContent = clock.minutes;
-                refs.seconds.textContent = clock.seconds;                
-           }, 1000);
+            refs.days.textContent = clock.days;
+            refs.hours.textContent = clock.hours;
+            refs.minutes.textContent = clock.minutes;
+            refs.seconds.textContent = clock.seconds;                
+    }, 1000);
 };
 
 function addLeadingZero(value) {
@@ -40,10 +40,10 @@ function addLeadingZero(value) {
 };
 
 const options = {
-  enableTime: true,
-  time_24hr: true,
-  defaultDate: new Date(),
-  minuteIncrement: 1,
+    enableTime: true,
+    time_24hr: true,
+    defaultDate: new Date(),
+    minuteIncrement: 1,
     onClose(selectedDates) {    
         if (selectedDates[0].getTime() < options.defaultDate.getTime()) {
             onDisabledBtn();

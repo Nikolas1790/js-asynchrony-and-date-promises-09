@@ -10,16 +10,14 @@ let checkFunction = false;
 let timeId = 0;
 
 function onStartChangeColor() {
-    if (checkFunction) {
-     
-            return;
+    if (checkFunction) {     
+        return;
     };
-   refs.stop.removeAttribute('disabled');
+    refs.stop.removeAttribute('disabled');
     refs.start.setAttribute('disabled', true);
     timeId = setInterval(() => {     
         refs.start.closest('body').style.backgroundColor = getRandomHexColor();
-        checkFunction = true;
-        
+        checkFunction = true;        
     }, 1000);  
    };
 
